@@ -3,7 +3,7 @@
     color: #1d4ed8;
 }
 
-.main-nav ul > li {
+.main-nav > ul > li {
     background: #f1f5f9;
 }
 
@@ -28,14 +28,12 @@
     }
     &:hover {
         background: #f8fafc;
-    }
-    .featured {
-        background: #fefce8;
-    }
-    &:hover {
-        h1 {
+        .post-title {
             color: #2563eb;
         }
+    }
+    &.featured {
+        background: #fefce8;
     }
 }
 
@@ -63,20 +61,19 @@
     color: white;
 }
 
-button {
-    &:hover {
-        background: #3b82f6;
-    }
-    &:active {
-        background: #3b82f6;
-    }
-    &:disabled {
-        background: #94a3b8;
-        color: #cbd5e1;
-    }
+.btn-primary:hover {
+    background: #3b82f6;
 }
 
-input:focus {
+.btn-primary:active {
+    background: #1d4ed8;
+}
+button:disabled {
+    background: #94a3b8;
+    color: #cbd5e1;
+}
+
+ .newsletter-form input:focus {
     background: #eff6ff;
 }
 /* Bài 4 : Structural Pseudo-classes */
@@ -133,7 +130,7 @@ tbody > tr:last-child {
 
 .quote::before {
     content: '"';
-    color: #0467e0;
+    color: #cbd5e1;
 }
 .steps li::marker {
     color: #2563eb;
@@ -159,13 +156,13 @@ a[href^="https://"] {
 }
 
 a[href$=".pdf"] {
-    color: #2563eb;
+    color: #ea580c;
 }
 
 [class*="btn"] {
     background: #e2e8f0;
 }
-.site-footer [lang|="vi"] {
+[lang|="vi"] {
     color: #0f172a;
 }
 
