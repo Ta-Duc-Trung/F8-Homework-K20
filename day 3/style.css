@@ -23,15 +23,19 @@
 
 .post {
     background: white;
+
     .post-title {
         color: #0f172a;
     }
+
     &:hover {
         background: #f8fafc;
+
         .post-title {
             color: #2563eb;
         }
     }
+
     &.featured {
         background: #fefce8;
     }
@@ -73,7 +77,7 @@ button:disabled {
     color: #cbd5e1;
 }
 
- .newsletter-form input:focus {
+.newsletter-form input:focus {
     background: #eff6ff;
 }
 /* Bài 4 : Structural Pseudo-classes */

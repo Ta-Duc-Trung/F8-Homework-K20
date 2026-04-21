@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trng tâm cấu hình giao diện (Demo)</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="panel">
+            <div class="groupTitle">
+                <h1 class="header-title">
+                    Trung tâm cấu hình giao diện (Demo)
+                </h1>
+                <p class="desc-title">Chọn giao diện (Theme)</p>
+                <input type="radio" name="theme" id="Light" value="Light" />
+                <label class="label-df" for="Light">Light</label>
+                <input type="radio" name="theme" id="Dark" value="Dark" />
+                <label class="label-df" for="Dark">Dark</label>
+                <p class="desc-title">Chọn màu chủ đạo (Color)</p>
+                <input type="radio" name="color" id="Red" value="Red" />
+                <label class="label-df" for="Red">Red</label>
+                <input type="radio" name="color" id="Blue" value="Blue" />
+                <label class="label-df" for="Blue">Blue</label>
+                <input type="radio" name="color" id="Green" value="Green" />
+                <label class="label-df" for="Green">Green</label>
+                <p class="desc-title">Chọn ngôn ngữ (Language)</p>
+                <input type="radio" name="language" id="VI" value="VI" />
+                <label class="label-df" for="VI">VI</label>
+                <input type="radio" name="language" id="EN" value="EN" />
+                <label class="label-df" for="EN">EN</label>
+                <p class="desc-title">Tùy chọn bổ sung (Option - Checkbox)</p>
+                <input
+                    type="checkbox"
+                    name="option"
+                    id="advance"
+                    value="advance"
+                />
+                <label class="label-df" for="advance"
+                    >Hiển thị mô tả nâng cao</label
+                >
+                <input type="checkbox" name="option" id="eco" value="eco" />
+                <label class="label-df" for="eco">Bật chế độ Eco</label>
+                <input
+                    type="checkbox"
+                    name="option"
+                    id="warning"
+                    value="warning"
+                />
+                <label class="label-df" for="warning"
+                    >Hiển thị cảnh báo quan trọng</label
+                >
+                <div class="contentArea">
+                    <p class="light-content content-df">
+                        Theme Light: Giao diện sáng, chữ đen
+                    </p>
+                    <p class="dark-content content-df">
+                        Theme Dark: Giao diện tối, chữ sáng
+                    </p>
+                    <p class="red-content content-df">
+                        Màu Red: được nhấn mạnh khi chọn Red
+                    </p>
+                    <p class="blue-content content-df">
+                        Màu Blue: được nhấn mạnh khi chọn Blue
+                    </p>
+                    <p class="green-content content-df">
+                        Màu Green: được nhấn mạnh khi chọn Green
+                    </p>
+                    <p class="VI-content content-df">
+                        [VI]Xin chào bạn! Khi chọn VI, dòng này rõ hơn
+                    </p>
+                    <p class="EN-content content-df">
+                        [EN]Hello, world! Khi chọn EN, dòng này rõ hơn
+                    </p>
+                    <p class="advance-content content-df">
+                        Mô tả nâng cao: giải thích kỹ hơn về cách các lựa chọn
+                        đang ảnh hưởng giao diện
+                    </p>
+                    <p class="eco-content content-df">
+                        Chế độ Eco: mô phỏng trạng thái tiết kiệm tài nguyên cho
+                        giao diện
+                    </p>
+                    <p class="warning-content content-df">
+                        Cảnh báo quan trọng: khu vực dùng để nhấn mạnh thông tin
+                        hệ thống
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
