@@ -1,0 +1,282 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+}
+.bai1,
+.bai2,
+.bai3,
+.bai4,
+.bai5,
+.bai6,
+.bai7,
+.bai8,
+.bai9,
+.bai10 {
+    background-color: white;
+    border: 1px solid rgb(226, 215, 215);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: gray;
+}
+/* Bài 1 */
+.container1 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    gap: 210px;
+    align-items: center;
+}
+.box1,
+.box2,
+.box3 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+/* Bài 2 */
+
+.container2 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    gap: 210px;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.box1-2,
+.box2-2,
+.box3-2 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+/* Bài 3 */
+
+.container3 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box1-3,
+.box2-3,
+.box3-3 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+.box2-3 {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+/* Bài 4 */
+.container4 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.box1-4,
+.box2-4,
+.box3-4 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+.box2-4 {
+    margin-left: 10px;
+    margin-right: 40px;
+}
+
+/* Bài 5 */
+
+.container5 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+.box1-5,
+.box2-5,
+.box3-5 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+/* Bài 6 */
+.container6 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    justify-content: space-between;
+}
+
+.box1-6,
+.box2-6,
+.box3-6 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+    margin-top: 10px;
+}
+.box2-6 {
+    margin: 10px auto;
+}
+
+/* Bài 7 */
+
+.container7 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box1-7,
+.box2-7,
+.box3-7 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+.box2-7 {
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+/* Bài 8 */
+.container8 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    align-items: center;
+}
+
+.box1-8,
+.box2-8,
+.box3-8 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+.box2-8 {
+    margin: 0px auto;
+}
+/* Bài 9 */
+.container9 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.box1-9,
+.box2-9,
+.box3-9 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+.box1-9 {
+    margin-top: -60px;
+}
+
+.box3-9 {
+    margin-top: 60px;
+}
+
+/* Bài 10 */
+.container10 {
+    display: flex;
+    width: 600px;
+    height: 200px;
+    background: transparent;
+    border: 5px solid #ec6f5a;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box1-10,
+.box2-10,
+.box3-10 {
+    width: 60px;
+    height: 60px;
+    background-color: #5981b1;
+    color: white;
+    text-align: center;
+    align-content: center;
+}
+
+.box1-10 {
+    margin: 0px auto auto 0px;
+}
+.box3-10 {
+    margin: auto 0px 0px auto;
+}
