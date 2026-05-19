@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grid Layout</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#2f3448;
+    }
+
+    .container{
+      width:600px;
+      height:300px;
+      border:4px solid tomato;
+      padding:20px;
+
+      display:grid;
+
+      /* 3 cột */
+      grid-template-columns: 200px 150px 150px;
+
+      /* 2 hàng */
+      grid-template-rows: 1fr 1fr;
+
+      gap:20px;
+    }
+
+    .box{
+      border:4px solid tomato;
+      color:tomato;
+      font-size:50px;
+      font-weight:bold;
+
+      display:grid;
+      place-items:center;
+    }
+
+    /* box 1 chiếm 2 hàng */
+    .box1{
+      grid-row: span 2;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="box box1">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+
+</body>
+</html>
