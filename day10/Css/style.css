@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Common */
+.Service-Card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #ebf5fe;
+    padding: 20px 100px;
+    border: 3px solid #e6e0e0;
+    justify-content: center;
+    align-items: center;
+}
+.Service-Card > div {
+    padding: 30px;
+    background-color: #fff;
+    flex: 0 1 380px;
+    border-radius: 8px;
+}
+
+.top {
+    display: flex;
+    gap: 10px;
+    justify-content: start;
+    align-items: center;
+}
+.title {
+    line-height: 1.4;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "roboto";
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.desc {
+    font-size: 15px;
+    font-family: "roboto";
+    font-weight: 400;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.link {
+    font-size: 15px;
+    font-family: "roboto";
+    font-weight: bold;
+    color: #2196f3;
+    text-decoration: none;
+}
+.link:hover {
+    text-decoration: underline;
+}
+/* Common Icon*/
+.icon {
+    width: 60px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 32px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Custom Icon  */
+.icon-design {
+    background-color: #ff6b6b;
+}
+.icon-theme {
+    background: #4ecdc4;
+}
+.icon-digital {
+    background: #f9a825;
+}
+.icon-web {
+    background-color: #5e9cff;
+}
+.icon-responsive {
+    background-color: #9b59b6;
+}
+.icon-support {
+    background: #7cb342;
+}
+
+/*Hover*/
+.Unique-Design:hover {
+    border: 3px solid #ff6b6b;
+}
+.Theme-Development:hover {
+    border: 3px solid #4ecdc4;
+}
+.Digital-Marketing:hover {
+    border: 3px solid #f9a825;
+}
+.Website-Design:hover {
+    border: 3px solid #5e9cff;
+}
+.Responsive-Design:hover {
+    border: 3px solid #9b59b6;
+}
+.Quick-Support:hover {
+    border: 3px solid #7cb342;
+}
