@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+.box {
+    width: 300px;
+    height: 300px;
+    border: 5px solid #333;
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    top: -10;
+    left: 0;
+    font-size: 24px;
+    color: #ff5722;
+
+    animation: run 6s linear infinite;
+}
+
+@keyframes run {
+    0% {
+        top: -14px;
+        left: -10px;
+        transform: rotate(0deg);
+    }
+    25% {
+        top: -14px;
+        left: calc(100% - 10px);
+        transform: rotate(0deg);
+    }
+    25.01% {
+        left: calc(100% - 10px);
+        transform: rotate(90deg);
+    }
+    50% {
+        top: calc(100% - 14px);
+        left: calc(100% - 10px);
+        transform: rotate(90deg);
+    }
+    50.01% {
+        top: calc(100% - 12px);
+        transform: rotate(180deg);
+    }
+    75% {
+        top: calc(100% - 12px);
+        transform: rotate(180deg);
+    }
+    75.01% {
+        left: -14px;
+        transform: rotate(270deg);
+    }
+    100% {
+        top: -14px;
+        left: -10px;
+        transform: rotate(270deg);
+    }
+}
