@@ -54,6 +54,6 @@ function highlight(text, word) {
         }
         return item;
     });
-    return highlightedWords.join (" ")
+    return highlightedWords.join(" ");
 }
 console.log(highlight(text, "javascript"));

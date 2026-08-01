@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 26 - Event trong DOM</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: "#4c6ef5",
+            "brand-dark": "#3b5bdb",
+            link: "#4d7cff",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-sans text-neutral-900 p-8 max-w-5xl">
+  <h1 class="text-5xl font-extrabold mb-1.5">Day 26</h1>
+  <h2 class="text-3xl font-extrabold mb-4">Event trong DOM</h2>
+ 
+  <p class="text-2xl mb-2.5">Event Object</p>
+  <ul class="list-disc pl-11 mb-7 space-y-2 text-2xl">
+    <li>event.type</li>
+    <li class="text-link">event.target</li>
+    <li>event.currentTarget</li>
+    <li>event.preventDefault()</li>
+    <li>event.stopPropagation()</li>
+  </ul>
+ 
+  <!-- Form add user -->
+  <div class="border border-neutral-300 rounded-xl px-8 pt-6 pb-8">
+    <h2 class="text-3xl font-extrabold mb-6">Form add user</h2>
+ 
+    <form id="userForm">
+      <div class="flex items-center gap-3.5 mb-5">
+        <label for="username" class="text-2xl whitespace-nowrap">Username :</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter username..."
+          autocomplete="off"
+          class="w-[460px] max-w-full text-xl px-4 py-3 border border-neutral-300 rounded-lg outline-none text-neutral-700
+                 placeholder:text-neutral-400 focus:border-brand focus:ring-4 focus:ring-brand/15"
+        />
+      </div>
+      <button
+        type="submit"
+        class="bg-brand hover:bg-brand-dark active:bg-indigo-700 text-white text-xl font-semibold px-8 py-3 rounded-lg transition-colors"
+      >
+        Submit
+      </button>
+    </form>
+ 
+    <ul id="userList" class="list-none p-0 mt-6 space-y-2"></ul>
+    <p id="emptyMsg" class="text-neutral-400 text-lg mt-5">Chưa có user nào.</p>
+  </div>
+    <script src="./baitap2.js"></script>
+</body>
+</html>
