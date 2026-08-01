@@ -99,11 +99,4 @@
 // console.log(objA);
 // console.log(objB);
 
-const animal = {
- speak() {
- return `${this.name} kêu`;
- }
-};
-const dog = Object.create(animal);
-dog.name = 'Rex';
-console.log(dog.speak());
+
