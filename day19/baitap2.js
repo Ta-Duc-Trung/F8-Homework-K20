@@ -91,61 +91,6 @@ const orders = [
     },
 ];
 
-// function getCustomerStatistics(customers, products, orders) {
-//     return customers
-//         .map((customer) => {
-//             const customerOrders = orders.filter(
-//                 (order) => order.customerId === customer.id,
-//             );
-
-//             const allItems = customerOrders.flatMap((order) => order.items);
-
-//             const groupedProducts = {};
-
-//             for (const item of allItems) {
-//                 const product = products.find(
-//                     (product) => product.id === item.productId,
-//                 );
-
-//                 if (!groupedProducts[item.productId]) {
-//                     groupedProducts[item.productId] = {
-//                         name: product.name,
-//                         quantity: item.quantity,
-//                         totalSpent: product.price * item.quantity,
-//                     };
-//                 } else {
-//                     groupedProducts[item.productId].quantity += item.quantity;
-//                     groupedProducts[item.productId].totalSpent +=
-//                         product.price * item.quantity;
-//                 }
-//             }
-
-//             const productList = Object.values(groupedProducts);
-
-//             productList.sort((a, b) => b.totalSpent - a.totalSpent);
-//             const totalSpent = productList.reduce(
-//                 (sum, product) => sum + product.totalSpent,
-//                 0,
-//             );
-
-//             return {
-//                 id: customer.id,
-//                 name: customer.name,
-//                 totalSpent,
-//                 products: productList,
-//             };
-//         })
-//         .sort((a, b) => b.totalSpent - a.totalSpent);
-// }
-
-// console.log(getCustomerStatistics(customers, products, orders));
-
-// const a = { value: 1 };
-// const b = { value: 1 };
-// const c = a;
-// console.log(a === b);
-// console.log(a === c);
-
 function getCustomerStatistics(customers, products, orders) {
     const result = [];
 
