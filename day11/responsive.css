@@ -1,0 +1,118 @@
+@media (max-width: 768px) {
+       .header {
+        padding: 1rem;
+    }
+
+    .nav--desktop {
+        display: none;
+    }
+
+    .header__hamburger {
+        display: inline-flex;
+    }
+
+    .nav--mobile {
+        position: fixed;
+        z-index: 1000;
+
+        top: 0;
+        right: -300px;
+
+        display: block;
+
+        width: 300px;
+        height: 100vh;
+        padding: 2rem;
+
+        background: #3a3a3a;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+
+        transition:
+            right 0.3s ease,
+            background-color 0.3s ease,
+            color 0.3s ease;
+    }
+
+    .nav__top {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 3rem;
+    }
+
+    .nav__mobile-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav__link--mobile {
+        display: block;
+        padding: 1rem;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-toggle:checked ~ .nav--mobile {
+        right: 0;
+    }
+
+    .menu-toggle:checked ~ .overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .container {
+        flex-direction: row;
+        gap: 1.5rem;
+
+        max-width: 1400px;
+        padding: 1rem;
+    }
+
+    .container__sidebar {
+        flex-basis: 250px;
+        min-height: 400px;
+    }
+
+    .card {
+        flex-basis: calc((100% - 1rem) / 2);
+    }
+}
+
+@media (max-width: 480px) {
+    .nav--mobile {
+        right: -280px;
+
+        width: 280px;
+        padding: 2rem 1.5rem;
+    }
+
+    .menu-toggle:checked ~ .nav--mobile {
+        right: 0;
+    }
+    .container {
+        flex-direction: column;
+        gap: 0;
+
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    .container__content {
+        width: 100%;
+    }
+
+    .container__sidebar {
+        flex: none;
+
+        width: 100%;
+        min-height: auto;
+        margin-top: 1rem;
+    }
+    .container__heading {
+        font-size: 1.5rem;
+    }
+    .card {
+        flex-basis: 100%;
+        width: 100%;
+    }
+}
