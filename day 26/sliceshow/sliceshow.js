@@ -1,32 +1,38 @@
-// Danh sách 5 ảnh gốc
-var slideImages = [
+const slideImages = [
     "https://picsum.photos/id/1015/900/500",
     "https://picsum.photos/id/1025/900/500",
     "https://picsum.photos/id/1035/900/500",
     "https://picsum.photos/id/1043/900/500",
     "https://picsum.photos/id/1050/900/500",
 ];
-var totalSlides = slideImages.length;
+const totalSlides = slideImages.length;
 
-var sliderWrapEl = document.getElementById("sliderWrap");
-var sliderTrackEl = document.getElementById("sliderTrack");
-var prevBtnEl = document.getElementById("prevBtn");
-var nextBtnEl = document.getElementById("nextBtn");
-var dotsWrapEl = document.getElementById("sliderDots");
-var counterEl = document.getElementById("sliderCounter");
-var currentPosition = 1;
-var currentRealIndex = 0;
-var autoplayTimerId = null;
-var sliderKeydownListener = null;
+const sliderWrapEl = document.getElementById("sliderWrap");
+const sliderTrackEl = document.getElementById("sliderTrack");
+const prevBtnEl = document.getElementById("prevBtn");
+const nextBtnEl = document.getElementById("nextBtn");
+const dotsWrapEl = document.getElementById("sliderDots");
+const counterEl = document.getElementById("sliderCounter");
+
+let currentPosition = 1;
+let currentRealIndex = 0;
+let autoplayTimerId = null;
+let sliderKeydownListener = null;
+
 function buildSlides() {
-    var htmlContent = "";
+    let htmlContent = "";
+
     htmlContent += createSlideHtml(slideImages[totalSlides - 1]);
-    for (var i = 0; i < totalSlides; i++) {
+
+    for (let i = 0; i < totalSlides; i++) {
         htmlContent += createSlideHtml(slideImages[i]);
     }
+
     htmlContent += createSlideHtml(slideImages[0]);
+
     sliderTrackEl.innerHTML = htmlContent;
 }
+
 function createSlideHtml(imageUrl) {
     return (
         '<div class="slide w-full flex-shrink-0 h-[340px]">' +
@@ -38,9 +44,9 @@ function createSlideHtml(imageUrl) {
 }
 
 function buildDots() {
-    var htmlContent = "";
-    for (var i = 0; i < totalSlides; i++) {
-        var activeClass = i === 0 ? " is-active" : "";
+    let htmlContent = "";
+    for (let i = 0; i < totalSlides; i++) {
+        const activeClass = i === 0 ? " is-active" : "";
         htmlContent +=
             '<button class="dot' +
             activeClass +
@@ -68,9 +74,10 @@ function moveTrackTo(position, useAnimation) {
     currentRealIndex = (position - 1 + totalSlides) % totalSlides;
     updateSliderUI();
 }
+
 function updateSliderUI() {
-    var allDots = dotsWrapEl.querySelectorAll(".dot");
-    for (var i = 0; i < allDots.length; i++) {
+    const allDots = dotsWrapEl.querySelectorAll(".dot");
+    for (let i = 0; i < allDots.length; i++) {
         if (i === currentRealIndex) {
             allDots[i].classList.add("is-active");
         } else {
@@ -79,12 +86,15 @@ function updateSliderUI() {
     }
     counterEl.textContent = currentRealIndex + 1 + " / " + totalSlides;
 }
+
 function goToNextSlide() {
     moveTrackTo(currentPosition + 1, true);
 }
+
 function goToPrevSlide() {
     moveTrackTo(currentPosition - 1, true);
 }
+
 sliderTrackEl.addEventListener("transitionend", function () {
     if (currentPosition === totalSlides + 1) {
         moveTrackTo(1, false);
@@ -92,6 +102,7 @@ sliderTrackEl.addEventListener("transitionend", function () {
         moveTrackTo(totalSlides, false);
     }
 });
+
 function restartAutoplay() {
     clearInterval(autoplayTimerId);
     autoplayTimerId = setInterval(goToNextSlide, 3000);
@@ -105,14 +116,16 @@ nextBtnEl.addEventListener("click", function () {
     goToNextSlide();
     restartAutoplay();
 });
+
 dotsWrapEl.addEventListener("click", function (e) {
-    var clickedDot = e.target.closest(".dot");
+    const clickedDot = e.target.closest(".dot");
     if (!clickedDot) return;
 
-    var index = Number(clickedDot.dataset.index);
+    const index = Number(clickedDot.dataset.index);
     moveTrackTo(index + 1, true);
     restartAutoplay();
 });
+
 sliderWrapEl.addEventListener("mouseenter", function () {
     clearInterval(autoplayTimerId);
 });
