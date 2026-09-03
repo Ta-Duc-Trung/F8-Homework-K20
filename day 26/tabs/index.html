@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Câu 2 — Tabs</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="stylesheet" href="./tabs.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body
+        class="bg-[#14171f] text-slate-100 font-sans leading-relaxed px-5 pt-12 pb-24"
+    >
+        <div class="max-w-[640px] mx-auto">
+            <a
+                href="../index.html"
+                class="text-[#9098ac] text-sm hover:text-[#f2a93c]"
+                >← Về trang chính</a
+            >
+
+            <div
+                class="bg-[#1d2230] border border-[#323a4e] rounded-[20px] px-7 pt-7 pb-8 mt-6"
+            >
+                <h2 class="text-[0.8rem] font-bold text-[#f2a93c] mb-1">
+                    Câu 2
+                </h2>
+                <h3 class="text-xl font-bold mb-5">Tabs</h3>
+
+                <div class="outline-none" id="tabs">
+                    <div
+                        class="flex gap-1 border-b border-[#323a4e]"
+                        id="tabsBar"
+                    >
+                        <button
+                            class="tab-btn is-active px-4 py-2.5 text-[0.9rem] font-semibold text-[#9098ac] border-b-2 border-transparent -mb-px rounded-t-md hover:text-slate-100 hover:bg-[#262c3d]"
+                            data-tab="mota"
+                            tabindex="0"
+                        >
+                            Mô tả
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-2.5 text-[0.9rem] font-semibold text-[#9098ac] border-b-2 border-transparent -mb-px rounded-t-md hover:text-slate-100 hover:bg-[#262c3d]"
+                            data-tab="danhgia"
+                            tabindex="0"
+                        >
+                            Đánh giá
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-2.5 text-[0.9rem] font-semibold text-[#9098ac] border-b-2 border-transparent -mb-px rounded-t-md hover:text-slate-100 hover:bg-[#262c3d]"
+                            data-tab="thongso"
+                            tabindex="0"
+                        >
+                            Thông số kỹ thuật
+                        </button>
+                        <button
+                            class="tab-btn px-4 py-2.5 text-[0.9rem] font-semibold text-[#9098ac] border-b-2 border-transparent -mb-px rounded-t-md hover:text-slate-100 hover:bg-[#262c3d]"
+                            data-tab="binhluan"
+                            tabindex="0"
+                        >
+                            Bình luận
+                        </button>
+                    </div>
+
+                    <div class="pt-5 px-1 text-[0.92rem]">
+                        <div class="tab-panel is-active" data-panel="mota">
+                            <p>
+                                Sản phẩm bàn phím cơ compact 65%, khung nhôm
+                                CNC, hỗ trợ kết nối 3 chế độ (Bluetooth, 2.4GHz,
+                                USB-C). Thiết kế tối giản, phù hợp cho cả công
+                                việc lẫn giải trí, hành trình phím thoải mái cho
+                                gõ liên tục nhiều giờ.
+                            </p>
+                        </div>
+                        <div class="tab-panel" data-panel="danhgia">
+                            <ul
+                                class="list-disc pl-5 text-[#9098ac] space-y-1.5"
+                            >
+                                <li>
+                                    ★★★★★ — "Gõ rất đã tay, âm thanh trầm ấm." —
+                                    Minh T.
+                                </li>
+                                <li>
+                                    ★★★★☆ — "Pin trâu, kết nối ổn định." — Lan
+                                    P.
+                                </li>
+                                <li>
+                                    ★★★★★ — "Đóng gói cẩn thận, giao nhanh." —
+                                    Huy N.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" data-panel="thongso">
+                            <ul
+                                class="list-disc pl-5 text-[#9098ac] space-y-1.5"
+                            >
+                                <li>Layout: 65% — 68 phím</li>
+                                <li>Switch: Hot-swap, 3-pin/5-pin</li>
+                                <li>Kết nối: Bluetooth 5.1 / 2.4GHz / USB-C</li>
+                                <li>
+                                    Pin: 4000mAh, khoảng 60 ngày sử dụng thường
+                                </li>
+                                <li>Trọng lượng: 620g</li>
+                            </ul>
+                        </div>
+                        <div class="tab-panel" data-panel="binhluan">
+                            <p class="text-[#9098ac] mb-3.5">
+                                Đoạn mã ví dụ để gắn sự kiện bình luận mới:
+                            </p>
+                            <pre
+                                class="bg-[#14171f] border border-[#323a4e] rounded-md px-4 py-3.5 overflow-x-auto font-mono text-[0.82rem] text-[#5fd3b3] m-0"
+                            >
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+  addComment(text);
+  input.value = "";
+});</pre
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./tabs.js"></script>
+    </body>
+</html>

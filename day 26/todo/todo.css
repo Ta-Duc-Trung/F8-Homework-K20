@@ -1,0 +1,29 @@
+.todo-item {
+    transition:
+        background 0.15s,
+        opacity 0.28s ease,
+        transform 0.28s ease,
+        max-height 0.28s ease,
+        padding 0.28s ease,
+        margin 0.28s ease;
+    max-height: 60px;
+    overflow: hidden;
+}
+.todo-item.removing {
+    opacity: 0;
+    transform: translateX(-12px);
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+}
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #9098ac;
+    opacity: 0.7;
+}
+.filter-btn.is-active {
+    background: #f2a93c;
+    color: #2a1c04;
+    border-color: #f2a93c;
+}

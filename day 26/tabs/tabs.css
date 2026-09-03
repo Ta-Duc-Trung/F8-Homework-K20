@@ -1,0 +1,4 @@
+
+  .tab-btn.is-active{ color: #f2a93c; border-bottom-color: #f2a93c; }
+  .tab-panel{ display: none; }
+  .tab-panel.is-active{ display: block; }

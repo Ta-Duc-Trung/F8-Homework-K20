@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Câu 3 — Slideshow</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="stylesheet" href="./sliceshow.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body
+        class="bg-[#14171f] text-slate-100 font-sans leading-relaxed px-5 pt-12 pb-24"
+    >
+        <div class="max-w-[640px] mx-auto">
+            <a
+                href="../index.html"
+                class="text-[#9098ac] text-sm hover:text-[#f2a93c]"
+                >← Về trang chính</a
+            >
+
+            <div
+                class="bg-[#1d2230] border border-[#323a4e] rounded-[20px] px-7 pt-7 pb-8 mt-6"
+            >
+                <h2 class="text-[0.8rem] font-bold text-[#f2a93c] mb-1">
+                    Câu 3
+                </h2>
+                <h3 class="text-xl font-bold mb-5">Slideshow</h3>
+
+                <div
+                    class="relative rounded-[20px] overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,0.35)] outline-none"
+                    id="sliderWrap"
+                    tabindex="0"
+                >
+                    <div class="slider-track flex" id="sliderTrack"></div>
+                    <button
+                        class="absolute top-1/2 -translate-y-1/2 left-3.5 w-[38px] h-[38px] rounded-full bg-black/55 text-white text-lg flex items-center justify-center hover:bg-black/85"
+                        id="prevBtn"
+                        aria-label="Previous"
+                    >
+                        ‹
+                    </button>
+                    <button
+                        class="absolute top-1/2 -translate-y-1/2 right-3.5 w-[38px] h-[38px] rounded-full bg-black/55 text-white text-lg flex items-center justify-center hover:bg-black/85"
+                        id="nextBtn"
+                        aria-label="Next"
+                    >
+                        ›
+                    </button>
+                    <div
+                        class="absolute top-3.5 right-4 bg-black/55 text-white text-xs font-semibold px-2.5 py-1 rounded-full"
+                        id="sliderCounter"
+                    >
+                        1 / 5
+                    </div>
+                    <div
+                        class="absolute bottom-3.5 left-1/2 -translate-x-1/2 flex gap-2"
+                        id="sliderDots"
+                    ></div>
+                </div>
+            </div>
+        </div>
+        <script src="./sliceshow.js"></script>
+    </body>
+</html>

@@ -1,0 +1,11 @@
+.slider-track {
+    transition: transform 0.5s ease;
+}
+.slider-track.no-anim {
+    transition: none;
+}
+.dot.is-active {
+    background: #f2a93c;
+    width: 20px;
+    border-radius: 5px;
+}

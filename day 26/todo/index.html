@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Câu 1 — Todo List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="./todo.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body class="bg-[#14171f] text-slate-100 font-sans leading-relaxed px-5 pt-12 pb-24">
+<div class="max-w-[640px] mx-auto">
+
+  <a href="../index.html" class="text-[#9098ac] text-sm hover:text-[#f2a93c]">← Về trang chính</a>
+
+  <div class="bg-[#1d2230] border border-[#323a4e] rounded-[20px] px-7 pt-7 pb-8 mt-6">
+    <h2 class="text-[0.8rem] font-bold text-[#f2a93c] mb-1">Câu 1</h2>
+    <h3 class="text-xl font-bold mb-5">Todo List</h3>
+
+    <div class="flex gap-2.5">
+      <input type="text" id="todoInput" placeholder="Bạn cần làm gì hôm nay?"
+        class="flex-1 bg-[#262c3d] border border-[#323a4e] rounded-md px-3 py-2.5 text-[0.95rem] text-slate-100 outline-none focus:border-[#f2a93c]">
+      <button id="todoAddBtn"
+        class="bg-[#f2a93c] text-[#2a1c04] font-bold px-[18px] py-2.5 rounded-md whitespace-nowrap hover:brightness-110">Thêm</button>
+    </div>
+    <div class="text-red-400 text-[0.82rem] mt-1.5 min-h-[1.1em]" id="todoAddError"></div>
+
+    <div class="flex gap-1.5 mt-5 mb-1" id="todoFilters">
+      <button class="filter-btn is-active px-3.5 py-1.5 rounded-full text-[0.85rem] font-semibold text-[#9098ac] border border-[#323a4e]" data-filter="all">Tất cả</button>
+      <button class="filter-btn px-3.5 py-1.5 rounded-full text-[0.85rem] font-semibold text-[#9098ac] border border-[#323a4e] hover:text-slate-100" data-filter="active">Chưa hoàn thành</button>
+      <button class="filter-btn px-3.5 py-1.5 rounded-full text-[0.85rem] font-semibold text-[#9098ac] border border-[#323a4e] hover:text-slate-100" data-filter="completed">Hoàn thành</button>
+    </div>
+
+    <ul class="list-none m-0 p-0 mt-4" id="todoList"></ul>
+
+    <div class="flex items-center justify-between mt-[18px] pt-4 border-t border-[#323a4e]">
+      <span class="text-[#9098ac] text-[0.85rem]" id="todoCount">0/0 mục đã hoàn thành</span>
+      <button id="clearCompletedBtn"
+        class="hidden text-red-400 text-[0.82rem] font-semibold px-3 py-1.5 rounded-md border border-red-400/40 hover:bg-red-400/10">Xoá tất cả</button>
+    </div>
+  </div>
+
+</div>
+<script src="./todo.js"></script>
+</body>
+</html>
