@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fingerprinting — BOM Explorer</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            bg: "#0F1620",
+                            surface: "#16202C",
+                            surface2: "#1C2733",
+                            edge: "#26323F",
+                            accent: "#4FD1C5",
+                            accent2: "#F2B84B",
+                            danger: "#E2574C",
+                            muted: "#8AA0AE",
+                        },
+                    },
+                },
+            };
+        </script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="bg-bg text-slate-100 min-h-screen font-body antialiased">
+        <header
+            class="border-b border-edge sticky top-0 bg-bg/90 backdrop-blur z-20"
+        >
+            <div
+                class="max-w-3xl mx-auto px-5 py-4 flex items-center justify-between"
+            >
+                <div class="flex items-center gap-2.5">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-accent/15 border border-accent/40 flex items-center justify-center text-accent font-display font-bold"
+                        >B</span
+                    >
+                    <span
+                        class="font-display font-semibold text-lg tracking-tight"
+                        >BOM Explorer</span
+                    >
+                </div>
+                <a
+                    href="index.html"
+                    class="text-sm px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-surface2 transition-colors"
+                    >← Trang chủ</a
+                >
+            </div>
+        </header>
+
+        <main class="max-w-3xl mx-auto px-5 py-10 view-fade">
+            <span
+                class="inline-block text-xs font-medium tracking-wide text-accent bg-accent/10 border border-accent/30 rounded-full px-2.5 py-0.5 mb-4"
+                >Truy cập trực tiếp</span
+            >
+            <h1 class="font-display text-3xl font-bold tracking-tight mb-2">
+                Fingerprint của thiết bị này
+            </h1>
+            <p id="direct-note" class="text-muted mb-6 text-sm">
+                Trang được mở trực tiếp (không qua nút "Xem Fingerprinting" ở
+                trang chủ) nên dữ liệu bên dưới được BOM thu thập lại tại chỗ,
+                thay vì đọc từ
+                <code class="font-data text-accent2">history.state</code>.
+            </p>
+
+            <div class="bg-surface border border-edge rounded-xl p-5 mb-6">
+                <p class="text-sm text-muted mb-2">
+                    Chuỗi fingerprint (nối chuỗi):
+                </p>
+                <p
+                    id="fingerprint-string"
+                    class="font-data text-sm sm:text-base text-accent break-all leading-relaxed"
+                ></p>
+            </div>
+
+            <div
+                id="fingerprint-fields"
+                class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"
+            ></div>
+
+            <a
+                href="index.html"
+                class="inline-flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M19 12H5M11 18l-6-6 6-6" />
+                </svg>
+                Quay lại trang chủ
+            </a>
+        </main>
+
+        <footer
+            class="max-w-3xl mx-auto px-5 py-8 text-center text-xs text-muted"
+        >
+            Bài tập BOM · location.search · history API
+        </footer>
+
+        <script src="js/common.js"></script>
+        <script src="js/fingerprint.js"></script>
+    </body>
+</html>

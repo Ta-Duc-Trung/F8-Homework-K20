@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Trang chủ — BOM Explorer</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            bg: "#0F1620",
+                            surface: "#16202C",
+                            surface2: "#1C2733",
+                            edge: "#26323F",
+                            accent: "#4FD1C5",
+                            accent2: "#F2B84B",
+                            danger: "#E2574C",
+                            muted: "#8AA0AE",
+                        },
+                    },
+                },
+            };
+        </script>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body class="bg-bg text-slate-100 min-h-screen font-body antialiased">
+        <!-- ================= HEADER ================= -->
+        <header
+            class="border-b border-edge sticky top-0 bg-bg/90 backdrop-blur z-20"
+        >
+            <div
+                class="max-w-5xl mx-auto px-5 py-4 flex items-center justify-between"
+            >
+                <div class="flex items-center gap-2.5">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-accent/15 border border-accent/40 flex items-center justify-center text-accent font-display font-bold"
+                        >B</span
+                    >
+                    <span
+                        class="font-display font-semibold text-lg tracking-tight"
+                        >BOM Explorer</span
+                    >
+                </div>
+                <nav class="flex items-center gap-1 text-sm">
+                    <span
+                        class="px-3 py-1.5 rounded-md bg-surface2 text-accent font-medium"
+                        >Trang chủ</span
+                    >
+                    <a
+                        href="campaign.html?utm_source=ta_duc&amp;utm_campaign=campage_1"
+                        class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-surface2 transition-colors"
+                        >Quảng cáo</a
+                    >
+                    <button
+                        id="nav-fingerprint-btn"
+                        class="px-3 py-1.5 rounded-md text-slate-300 hover:text-white hover:bg-surface2 transition-colors"
+                    >
+                        Fingerprinting
+                    </button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- ================= HOME VIEW ================= -->
+        <main id="home-view" class="max-w-5xl mx-auto px-5 py-10 view-fade">
+            <section class="mb-10">
+                <h1
+                    class="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-2"
+                >
+                    Thiết bị của bạn, đọc trực tiếp từ trình duyệt
+                </h1>
+                <p class="text-muted max-w-2xl">
+                    Các thông tin dưới đây được lấy trực tiếp từ Browser Object
+                    Model (BOM) — không qua máy chủ nào cả.
+                </p>
+            </section>
+
+            <!-- Grid thông tin BOM -->
+            <section
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10"
+            >
+                <!-- Vị trí -->
+                <div
+                    class="bg-surface border border-edge rounded-xl p-5 hover:border-accent/50 transition-colors"
+                >
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <path
+                                    d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"
+                                />
+                                <circle cx="12" cy="10" r="2.5" />
+                            </svg>
+                        </span>
+                        <span class="text-sm text-muted">Vị trí (tọa độ)</span>
+                    </div>
+                    <p
+                        id="geo-value"
+                        class="font-data text-base text-slate-100"
+                    >
+                        Đang lấy vị trí…
+                    </p>
+                </div>
+
+                <!-- Online -->
+                <div
+                    class="bg-surface border border-edge rounded-xl p-5 hover:border-accent/50 transition-colors"
+                >
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <path
+                                    d="M5 12.5a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0M12 19.5h.01"
+                                />
+                            </svg>
+                        </span>
+                        <span class="text-sm text-muted"
+                            >Trạng thái kết nối</span
+                        >
+                    </div>
+                    <p class="flex items-center gap-2">
+                        <span id="online-dot"></span>
+                        <span id="online-text" class="font-data"></span>
+                    </p>
+                </div>
+
+                <!-- Trình duyệt -->
+                <div
+                    class="bg-surface border border-edge rounded-xl p-5 hover:border-accent/50 transition-colors"
+                >
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <circle cx="12" cy="12" r="9" />
+                                <path
+                                    d="M3 12h18M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18Z"
+                                />
+                            </svg>
+                        </span>
+                        <span class="text-sm text-muted">Trình duyệt</span>
+                    </div>
+                    <p
+                        id="browser-value"
+                        class="font-data text-base text-slate-100"
+                    >
+                        —
+                    </p>
+                </div>
+
+                <!-- Hệ điều hành -->
+                <div
+                    class="bg-surface border border-edge rounded-xl p-5 hover:border-accent/50 transition-colors"
+                >
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect
+                                    x="3"
+                                    y="4"
+                                    width="18"
+                                    height="12"
+                                    rx="1.5"
+                                />
+                                <path d="M8 20h8M12 16v4" />
+                            </svg>
+                        </span>
+                        <span class="text-sm text-muted">Hệ điều hành</span>
+                    </div>
+                    <p id="os-value" class="font-data text-base text-slate-100">
+                        —
+                    </p>
+                </div>
+
+                <!-- Ngôn ngữ -->
+                <div
+                    class="bg-surface border border-edge rounded-xl p-5 hover:border-accent/50 transition-colors"
+                >
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <circle cx="12" cy="12" r="9" />
+                                <path
+                                    d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"
+                                />
+                            </svg>
+                        </span>
+                        <span class="text-sm text-muted"
+                            >Ngôn ngữ hiện tại</span
+                        >
+                    </div>
+                    <p
+                        id="lang-value"
+                        class="font-data text-sm text-slate-100 break-words"
+                    >
+                        —
+                    </p>
+                </div>
+
+                <!-- Kích thước màn hình + Hướng -->
+                <div
+                    class="bg-surface border border-edge rounded-xl p-5 hover:border-accent/50 transition-colors"
+                >
+                    <div class="flex items-center gap-2.5 mb-3">
+                        <span
+                            class="w-9 h-9 rounded-lg bg-accent/10 flex items-center justify-center text-accent"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect
+                                    x="3"
+                                    y="5"
+                                    width="18"
+                                    height="12"
+                                    rx="1.5"
+                                />
+                                <path d="M8 21h8" />
+                            </svg>
+                        </span>
+                        <span class="text-sm text-muted">Màn hình</span>
+                    </div>
+                    <p
+                        id="screen-value"
+                        class="font-data text-base text-slate-100"
+                    >
+                        —
+                    </p>
+                    <p
+                        id="orientation-value"
+                        class="font-data text-sm text-muted mt-1"
+                    >
+                        —
+                    </p>
+                </div>
+            </section>
+
+            <!-- Banner quảng cáo -->
+            <section class="mb-6">
+                <h2 class="font-display text-lg font-semibold mb-3">
+                    Có thể bạn quan tâm
+                </h2>
+                <a
+                    href="campaign.html?utm_source=ta_duc&amp;utm_campaign=campage_1"
+                    class="group block relative rounded-2xl overflow-hidden border border-edge hover:border-accent/60 transition-all hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-10px_rgba(79,209,197,0.35)]"
+                >
+                    <img
+                        src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1400&q=70"
+                        alt="Quảng cáo: bàn phím cơ cho lập trình viên"
+                        class="w-full h-56 sm:h-64 object-cover"
+                    />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent"
+                    ></div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between"
+                    >
+                        <div>
+                            <span
+                                class="inline-block text-xs font-medium tracking-wide text-accent bg-accent/10 border border-accent/30 rounded-full px-2.5 py-0.5 mb-2"
+                                >Quảng cáo</span
+                            >
+                            <h3
+                                class="font-display text-xl font-semibold text-white"
+                            >
+                                Bàn phím cơ cho dân lập trình
+                            </h3>
+                            <p class="text-sm text-slate-300">
+                                Gõ mượt, gõ nhanh hơn — xem ưu đãi ngay
+                            </p>
+                        </div>
+                        <span
+                            class="hidden sm:flex w-10 h-10 rounded-full bg-white/10 border border-white/20 items-center justify-center text-white group-hover:bg-accent group-hover:text-bg transition-colors shrink-0"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path d="M7 17 17 7M9 7h8v8" />
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </section>
+
+            <!-- Nút đi tới Fingerprinting -->
+            <section
+                class="bg-surface border border-edge rounded-xl p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+            >
+                <div>
+                    <h3 class="font-display font-semibold text-lg mb-1">
+                        Xem dấu vân tay trình duyệt
+                    </h3>
+                    <p class="text-sm text-muted">
+                        Ghép các thông tin BOM ở trên thành 1 chuỗi fingerprint
+                        duy nhất, chuyển trang không reload (dùng pushState).
+                    </p>
+                </div>
+                <button
+                    id="go-fingerprint-btn"
+                    class="shrink-0 inline-flex items-center gap-2 bg-accent text-bg font-medium px-5 py-2.5 rounded-lg hover:bg-accent/85 active:scale-[0.98] transition-all"
+                >
+                    Xem Fingerprinting
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </button>
+            </section>
+        </main>
+
+        <!-- ================= FINGERPRINT VIEW (SPA, ẩn mặc định) ================= -->
+        <main id="fingerprint-view" class="max-w-5xl mx-auto px-5 py-10 hidden">
+            <button
+                id="back-home-btn"
+                class="inline-flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors mb-6"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path d="M19 12H5M11 18l-6-6 6-6" />
+                </svg>
+                Quay lại trang chủ
+            </button>
+
+            <h1 class="font-display text-3xl font-bold tracking-tight mb-2">
+                Fingerprint của thiết bị này
+            </h1>
+            <p class="text-muted mb-6">
+                Dữ liệu được truyền qua
+                <code class="font-data text-accent2">history.pushState</code> và
+                đọc lại từ
+                <code class="font-data text-accent2">history.state</code>, sau
+                đó nối chuỗi bên dưới.
+            </p>
+
+            <div class="bg-surface border border-edge rounded-xl p-5 mb-6">
+                <p class="text-sm text-muted mb-2">
+                    Chuỗi fingerprint (nối chuỗi):
+                </p>
+                <p
+                    id="fingerprint-string"
+                    class="font-data text-sm sm:text-base text-accent break-all leading-relaxed"
+                ></p>
+            </div>
+
+            <div
+                id="fingerprint-fields"
+                class="grid grid-cols-1 sm:grid-cols-2 gap-3"
+            ></div>
+        </main>
+
+        <footer
+            class="max-w-5xl mx-auto px-5 py-8 text-center text-xs text-muted"
+        >
+            Bài tập BOM · location.search · history API
+        </footer>
+
+        <script src="js/common.js"></script>
+        <script src="js/home.js"></script>
+    </body>
+</html>
