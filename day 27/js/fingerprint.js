@@ -1,29 +1,4 @@
-/**
- * ==========================================================
- * FILE: fingerprint.js  (chỉ dùng trong fingerprint.html)
- * ==========================================================
- * File này chạy khi người dùng mở TRỰC TIẾP file fingerprint.html
- * (gõ thẳng URL, hoặc bấm F5 để tải lại trang khi đang ở URL đó),
- * chứ KHÔNG phải đi qua nút bấm ở trang chủ.
- *
- * Vì sao cần file riêng cho trường hợp này?
- * -> Vì history.pushState() chỉ lưu "state" trong bộ nhớ của
- *    document HIỆN TẠI. Nếu người dùng F5 (tải lại trang), toàn
- *    bộ JavaScript và biến trong bộ nhớ sẽ bị xóa sạch và chạy
- *    lại từ đầu, nên history.state lúc đó sẽ là null (rỗng).
- *
- * Giải pháp: nếu không có sẵn state, ta tự đọc lại thông tin BOM
- * ngay tại trang này, y hệt như cách trang chủ đã làm.
- * ==========================================================
- */
 
-/* ----------------------------------------------------------
- * HÀM render(state): vẽ dữ liệu ra giao diện
- * ----------------------------------------------------------
- * Hàm này giống hệt hàm showFingerprintView() bên file home.js,
- * chỉ khác là ở đây không cần ẩn/hiện view nào cả vì trang này
- * chỉ có đúng 1 nội dung để hiển thị.
- * ---------------------------------------------------------- */
 function render(state) {
     var fingerprintText = buildFingerprintString(state);
     document.getElementById("fingerprint-string").textContent = fingerprintText;
@@ -67,33 +42,17 @@ function render(state) {
     }
 }
 
-/* ----------------------------------------------------------
- * KIỂM TRA: trang này đang có sẵn history.state hay không?
- * ----------------------------------------------------------
- * TRƯỜNG HỢP A: history.state có tồn tại và có field
- *   "fingerprint" = true.
- *   -> Trường hợp này khá hiếm khi mở file này, nhưng ta vẫn
- *      viết code xử lý cho đầy đủ và an toàn.
- *
- * TRƯỜNG HỢP B: history.state là null (trường hợp thường gặp
- *   nhất khi mở trực tiếp / F5 trang này).
- *   -> Ta tự thu thập lại dữ liệu BOM tại chỗ, y hệt trang chủ.
- * ---------------------------------------------------------- */
 if (history.state && history.state.fingerprint) {
-    // TRƯỜNG HỢP A
+
     document.getElementById("direct-note").classList.add("hidden");
     render(history.state);
 } else {
-    // TRƯỜNG HỢP B: tự lấy dữ liệu BOM giống hệt cách trang chủ đã làm
-
-    var data = collectStaticBOMInfo();
+      var data = collectStaticBOMInfo();
     data.location = "Đang lấy vị trí…";
 
-    // Vẽ giao diện ngay với dữ liệu tạm thời (vị trí đang chờ)
     render(data);
 
-    // Xin vị trí (bất đồng bộ), khi có kết quả thì vẽ lại
-    requestGeolocation(
+      requestGeolocation(
         function (locationText) {
             data.location = locationText;
             render(data);
@@ -104,12 +63,6 @@ if (history.state && history.state.fingerprint) {
         },
     );
 }
-
-/* ----------------------------------------------------------
- * Lắng nghe popstate phòng trường hợp hiếm gặp: người dùng
- * bấm Back/Forward ngay trong lúc vẫn đang ở document này
- * (ví dụ do trình duyệt lưu cache trang - "bfcache").
- * ---------------------------------------------------------- */
 window.addEventListener("popstate", function (event) {
     if (event.state && event.state.fingerprint) {
         document.getElementById("direct-note").classList.add("hidden");
