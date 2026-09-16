@@ -14,7 +14,7 @@ function FaqAccordion({ faqData, onSelectFaq }) {
                 <>
                     {faqData.map((faq) => {
                         const isOpen = openId === faq.id;
-
+              
                         return (
                             <div
                                 key={faq.id}
