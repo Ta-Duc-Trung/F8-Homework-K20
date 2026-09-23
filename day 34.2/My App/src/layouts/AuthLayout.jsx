@@ -10,11 +10,6 @@ export default function DefaultLayout({ cartCount }) {
   return (
     <>
       <Header cartCount={cartCount} />
-
-      {/* Outlet: React Router tự vẽ đúng page tương ứng với route con vào đây.
-          Lưu ý: Outlet KHÔNG tự truyền props cho page con - props của page con
-          (như addToCart, items...) đã được App.jsx gắn sẵn lúc khai báo
-          <Route element={<ProductDetail addToCart={addToCart} />} /> */}
       <main className="max-w-5xl mx-auto px-4 py-8 min-h-[70vh]">
         <Outlet />
       </main>

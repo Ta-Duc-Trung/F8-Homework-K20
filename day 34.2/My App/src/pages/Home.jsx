@@ -4,7 +4,6 @@ import { products } from "../data/products.js";
 import ProductCard from "../components/ProductCard.jsx";
 
 export default function Home() {
-  // Lấy 3 sản phẩm đầu tiên để làm "nổi bật"
   const featuredProducts = products.slice(0, 3);
 
   return (
@@ -23,9 +22,6 @@ export default function Home() {
       <section>
         <h2 className="text-xl font-semibold mb-4">Sản phẩm nổi bật</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {/* .map() để biến mảng sản phẩm thành mảng component <ProductCard />.
-              "key" là bắt buộc khi render danh sách trong React, giúp React
-              biết phần tử nào là phần tử nào khi danh sách thay đổi. */}
           {featuredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

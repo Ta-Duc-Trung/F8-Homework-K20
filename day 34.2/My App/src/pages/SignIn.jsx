@@ -1,4 +1,3 @@
-// Trang Sign In: form đăng nhập đơn giản, chỉ validate cơ bản, không gọi API thật.
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -56,8 +55,8 @@ export default function SignIn() {
           />
           {errors.password && <p className="text-xs text-red-600 mt-1">{errors.password}</p>}
         </div>
-
-        {success && <p className="text-sm text-green-600">Đăng nhập thành công (giả lập)!</p>}
+    
+        {success && <p className="text-sm text-green-600">Đăng nhập thành công !</p>}
 
         <button
           type="submit"

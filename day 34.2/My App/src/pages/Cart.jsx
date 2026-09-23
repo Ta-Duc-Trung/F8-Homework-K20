@@ -1,12 +1,6 @@
-// Trang Cart: hiển thị danh sách sản phẩm đã thêm vào giỏ.
-//
-// KHÔNG DÙNG CONTEXT: items, removeFromCart, cartTotal đều được App.jsx
-// truyền vào qua props (xem App.jsx, chỗ khai báo <Route path="/cart" .../>).
 import { Link } from "react-router-dom";
 import ProductPrice from "../components/ProductPrice.jsx";
-
 export default function Cart({ items, removeFromCart, cartTotal }) {
-  // Trường hợp giỏ hàng trống
   if (items.length === 0) {
     return (
       <div className="text-center py-16">

@@ -1,40 +1,26 @@
-// Trang Sign Up: form đăng ký đơn giản, chỉ validate cơ bản, không gọi API thật.
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 export default function SignUp() {
-  // 1 state duy nhất lưu toàn bộ dữ liệu form, thay vì 3 state riêng lẻ cho gọn
   const [form, setForm] = useState({ name: "", email: "", password: "" });
-
-  // Lưu lỗi của từng ô input, ví dụ { email: "Email không hợp lệ" }
   const [errors, setErrors] = useState({});
-
   const [success, setSuccess] = useState(false);
-
-  // Hàm dùng chung cho MỌI input: cập nhật đúng field theo "name" của input đó
   function handleChange(event) {
     const { name, value } = event.target;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   }
 
   function handleSubmit(event) {
-    event.preventDefault(); // chặn hành vi mặc định của form (reload trang)
-
+    event.preventDefault(); 
     const newErrors = {};
-
     if (form.name.trim().length === 0) {
       newErrors.name = "Vui lòng nhập họ tên.";
-    }
-    if (!form.email.includes("@") || !form.email.includes(".")) {
+    }    if (!form.email.includes("@") || !form.email.includes(".")) {
       newErrors.email = "Email không hợp lệ.";
     }
     if (form.password.length < 6) {
       newErrors.password = "Mật khẩu cần ít nhất 6 ký tự.";
     }
-
     setErrors(newErrors);
-
-    // Object.keys(newErrors).length === 0 nghĩa là không có lỗi nào cả
     setSuccess(Object.keys(newErrors).length === 0);
   }
 

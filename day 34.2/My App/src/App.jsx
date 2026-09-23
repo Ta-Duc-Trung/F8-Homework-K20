@@ -17,26 +17,19 @@ import Cart from "./pages/Cart.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import NotFound from "./pages/NotFound.jsx";
-
 export default function App() {
-  // State giỏ hàng - đặt ở đây vì cả Header, ProductDetail, Cart đều cần dùng tới.
   const [items, setItems] = useState([]);
-
-  // Thêm 1 sản phẩm vào giỏ
   function addToCart(product) {
     setItems((prevItems) => {
       const existingItem = prevItems.find((item) => item.id === product.id);
 
       if (existingItem) {
-        // Đã có trong giỏ -> tăng quantity lên 1
         return prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
-
-      // Chưa có -> thêm mới với quantity = 1
       return [
         ...prevItems,
         {
@@ -50,12 +43,11 @@ export default function App() {
     });
   }
 
-  // Xoá 1 sản phẩm khỏi giỏ theo id
+
   function removeFromCart(productId) {
     setItems((prevItems) => prevItems.filter((item) => item.id !== productId));
   }
 
-  // Tính sẵn số lượng + tổng tiền ở đây, để không phải tính lại nhiều lần ở các trang con
   const cartCount = items.reduce((total, item) => total + item.quantity, 0);
   const cartTotal = items.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -67,19 +59,14 @@ export default function App() {
       <ScrollToTop />
 
       <Routes>
-        {/* Nhóm 1: các route dùng chung DefaultLayout.
-            Truyền cartCount xuống DefaultLayout để nó truyền tiếp cho Header. */}
+    
         <Route element={<DefaultLayout cartCount={cartCount} />}>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<ProductList />} />
-
-          {/* ProductDetail cần hàm addToCart để "thêm vào giỏ" -> truyền qua props */}
           <Route
             path="/products/:productId"
             element={<ProductDetail addToCart={addToCart} />}
           />
-
-          {/* Cart cần đọc danh sách + hàm xoá + tổng tiền -> truyền qua props */}
           <Route
             path="/cart"
             element={
@@ -88,13 +75,10 @@ export default function App() {
           />
         </Route>
 
-        {/* Nhóm 2: AuthLayout không cần giỏ hàng, nên không cần truyền props gì thêm */}
         <Route element={<AuthLayout />}>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn />} />
         </Route>
-
-        {/* Trang 404 - vẫn cần cartCount vì DefaultLayout luôn hiện Header */}
         <Route element={<DefaultLayout cartCount={cartCount} />}>
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -1,7 +1,3 @@
-// Trang Product Detail: hiển thị chi tiết 1 sản phẩm, dựa vào :productId trên URL.
-//
-// KHÔNG DÙNG CONTEXT: hàm addToCart được App.jsx truyền vào qua props,
-// giống hệt cách bạn truyền props cho bất kỳ component con nào khác.
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { findProductById } from "../data/products.js";
@@ -9,23 +5,16 @@ import ProductPrice from "../components/ProductPrice.jsx";
 import NotFound from "./NotFound.jsx";
 
 export default function ProductDetail({ addToCart }) {
-  // useParams() đọc phần động trên URL.
-  // Route khai báo là "/products/:productId" -> useParams() trả về { productId: "..." }
   const { productId } = useParams();
 
   const product = findProductById(productId);
-
-  // State riêng của trang này: đã bấm "Thêm vào giỏ" chưa, để hiện thông báo
   const [added, setAdded] = useState(false);
-
-  // Nếu không tìm thấy sản phẩm với id này -> hiển thị nội dung 404
-  // ngay tại đây (vẫn giữ nguyên Header, không chuyển hẳn sang route khác)
   if (!product) {
     return <NotFound message={`Không tìm thấy sản phẩm với id "${productId}".`} />;
   }
 
   function handleAddToCart() {
-    addToCart(product); // gọi hàm mà App.jsx truyền vào qua props
+    addToCart(product); 
     setAdded(true);
   }
 

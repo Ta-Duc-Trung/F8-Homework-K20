@@ -50,7 +50,7 @@ export const products = [
     },
 ];
 
-// Hàm tiện ích: tìm 1 sản phẩm theo id. Dùng ở Product Detail Page.
+
 export function findProductById(id) {
     return products.find((product) => product.id === id);
 }

@@ -1,4 +1,3 @@
-// Trang Product List: hiển thị TẤT CẢ sản phẩm dưới dạng grid.
 import { products } from "../data/products.js";
 import ProductCard from "../components/ProductCard.jsx";
 
