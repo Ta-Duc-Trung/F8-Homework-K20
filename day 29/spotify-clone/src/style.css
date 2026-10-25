@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+.scroll-row {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}

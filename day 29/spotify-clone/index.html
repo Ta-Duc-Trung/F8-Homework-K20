@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang chủ - Spotify Clone</title>
+</head>
+<body class="min-h-screen bg-black text-white">
+
+  <header class="sticky top-0 z-40 flex items-center justify-between gap-4 bg-black/90 px-4 py-3 backdrop-blur sm:px-8">
+    <a href="/index.html" class="flex items-center gap-2 text-green-500">
+      <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/><path d="M6 9.5c4-1.2 8.5-.8 12 1.2M6.8 12.7c3.3-.9 6.8-.5 9.7 1M7.6 15.6c2.6-.6 5.2-.3 7.4.8" stroke="#000" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+      <span class="hidden text-lg font-bold text-white sm:inline">Spotify Clone</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="/profile.html" id="user-chip"
+        class="flex items-center gap-2 rounded-full bg-neutral-800 py-1 pl-1 pr-4 text-sm font-semibold hover:bg-neutral-700">
+        <span id="user-avatar" class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-green-600 text-black">?</span>
+        <span id="user-name">Trang cá nhân</span>
+      </a>
+      <button id="logout-btn"
+        class="rounded-full border border-neutral-500 px-4 py-2 text-sm font-semibold hover:border-white hover:bg-white hover:text-black">
+        Đăng xuất
+      </button>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl space-y-10 bg-gradient-to-b from-neutral-900 to-black px-4 pb-16 pt-6 sm:px-8">
+    <h1 id="greeting" class="text-3xl font-bold">Xin chào</h1>
+
+    <section>
+      <h2 class="mb-4 text-2xl font-bold">Nghệ sĩ</h2>
+      <div id="artists"></div>
+    </section>
+
+    <section>
+      <h2 class="mb-4 text-2xl font-bold">Album</h2>
+      <div id="albums"></div>
+    </section>
+
+    <section>
+      <h2 class="mb-4 text-2xl font-bold">Playlists</h2>
+      <div id="playlists"></div>
+    </section>
+
+    <section>
+      <h2 class="mb-4 text-2xl font-bold">Bài hát</h2>
+      <div id="tracks"></div>
+    </section>
+  </main>
+  <script type="module" src="/src/pages/home.js"></script>
+</body>
+</html>

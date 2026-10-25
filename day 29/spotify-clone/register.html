@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký - Spotify Clone</title>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-neutral-800 to-black text-white">
+  <main class="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-4 py-10">
+    <div class="rounded-2xl bg-neutral-900 p-8 shadow-2xl">
+      <h1 class="mb-2 text-3xl font-bold">Đăng ký</h1>
+      <p class="mb-6 text-neutral-400">Tạo tài khoản để bắt đầu nghe nhạc.</p>
+
+      <form id="register-form" novalidate class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div>
+          <label for="username" class="mb-1 block text-sm font-semibold">Tên đăng nhập *</label>
+          <input id="username" name="username" type="text" autocomplete="username" placeholder="taduc"
+            class="w-full rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white" />
+          <p data-error="username" class="mt-1 text-sm text-red-400"></p>
+        </div>
+        <div>
+          <label for="display_name" class="mb-1 block text-sm font-semibold">Tên hiển thị *</label>
+          <input id="display_name" name="display_name" type="text" placeholder="Tạ Đức"
+            class="w-full rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white" />
+          <p data-error="display_name" class="mt-1 text-sm text-red-400"></p>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="email" class="mb-1 block text-sm font-semibold">Email *</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="ban@example.com"
+            class="w-full rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white" />
+          <p data-error="email" class="mt-1 text-sm text-red-400"></p>
+        </div>
+        <div>
+          <label for="password" class="mb-1 block text-sm font-semibold">Mật khẩu *</label>
+          <input id="password" name="password" type="password" autocomplete="new-password" placeholder="Ít nhất 8 ký tự"
+            class="w-full rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white" />
+          <p data-error="password" class="mt-1 text-sm text-red-400"></p>
+        </div>
+        <div>
+          <label for="confirm_password" class="mb-1 block text-sm font-semibold">Nhập lại mật khẩu *</label>
+          <input id="confirm_password" name="confirm_password" type="password" autocomplete="new-password"
+            class="w-full rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white" />
+          <p data-error="confirm_password" class="mt-1 text-sm text-red-400"></p>
+        </div>
+        <p class="-mt-2 text-xs text-neutral-500 sm:col-span-2">Mật khẩu cần có chữ hoa, chữ thường và số.</p>
+        <div class="sm:col-span-2">
+          <label for="country" class="mb-1 block text-sm font-semibold">Quốc gia</label>
+          <input id="country" name="country" type="text" placeholder="Vietnam"
+            class="w-full rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white" />
+          <p data-error="country" class="mt-1 text-sm text-red-400"></p>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="bio" class="mb-1 block text-sm font-semibold">Giới thiệu</label>
+          <textarea id="bio" name="bio" rows="3" placeholder="Vài dòng về bạn..."
+            class="w-full resize-none rounded-md bg-neutral-800 px-4 py-3 outline-none focus:ring-2 focus:ring-white"></textarea>
+          <p data-error="bio" class="mt-1 text-sm text-red-400"></p>
+        </div>
+
+        <div id="form-error" class="hidden rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300 sm:col-span-2"></div>
+
+        <button type="submit"
+          class="rounded-full bg-green-500 py-3 font-bold text-black transition hover:scale-[1.02] hover:bg-green-400 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100 sm:col-span-2">
+          Đăng ký
+        </button>
+      </form>
+
+      <p class="mt-6 text-center text-sm text-neutral-400">
+        Đã có tài khoản?
+        <a href="/login.html" class="font-semibold text-white underline hover:text-green-400">Đăng nhập</a>
+      </p>
+    </div>
+  </main>
+  <script type="module" src="/src/pages/register.js"></script>
+</body>
+</html>
