@@ -1,8 +1,6 @@
 import { useState } from "react";
 import ProductFilter from "./components/ProductFilter.jsx";
 import RegisterForm from "./components/RegisterForm.jsx";
-
-// App chỉ làm 1 việc: cho chọn xem Bài 1 hay Bài 2
 export default function App() {
   const [tab, setTab] = useState("bai1");
 

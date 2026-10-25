@@ -1,10 +1,5 @@
 import { useMemo, useState } from "react";
 
-// ============================================================
-// 1. DỮ LIỆU: đặt NGOÀI component
-//    -> Chỉ tạo 1 lần khi file được nạp.
-//    -> Nếu đặt bên trong, mỗi lần render sẽ tạo lại 1.000 object mới.
-// ============================================================
 const PRODUCTS = Array.from({ length: 1000 }, (_, index) => {
   const categories = ["Điện thoại", "Laptop", "Thời trang", "Gia dụng", "Sách"];
 
@@ -12,45 +7,31 @@ const PRODUCTS = Array.from({ length: 1000 }, (_, index) => {
     id: index + 1,
     name: `Sản phẩm ${index + 1}`,
     category: categories[index % categories.length],
-    price: (index % 50) * 20 + 100, // Giá từ 100 đến 1080 (k)
-    rating: (index % 5) + 1, // Rating từ 1 đến 5 sao
+    price: (index % 50) * 20 + 100,
+    rating: (index % 5) + 1, 
   };
 });
 
 const CATEGORIES = ["Tất cả", "Điện thoại", "Laptop", "Thời trang", "Gia dụng", "Sách"];
 
 export default function ProductFilter() {
-  // ============================================================
-  // 2. STATE
-  // ============================================================
-  const [count, setCount] = useState(0); // chỉ để test re-render
-  const [keyword, setKeyword] = useState(""); // từ khóa tìm kiếm
-  const [category, setCategory] = useState("Tất cả"); // danh mục
-  const [sortType, setSortType] = useState("default"); // default | asc | desc
 
-  // ============================================================
-  // 3. useMemo: lọc + sắp xếp
-  //    React chỉ chạy lại hàm bên trong khi 1 trong 3 giá trị
-  //    [keyword, category, sortType] thay đổi.
-  //    Bấm "Tăng count" -> count đổi -> component render lại,
-  //    NHƯNG useMemo trả về kết quả cũ đã cache, không lọc lại.
-  //    (PRODUCTS nằm ngoài component, không bao giờ đổi, nên không cần
-  //    đưa vào dependency.)
-  // ============================================================
+  const [count, setCount] = useState(0); 
+  const [keyword, setKeyword] = useState(""); 
+  const [category, setCategory] = useState("Tất cả"); 
+  const [sortType, setSortType] = useState("default"); 
+
   const filteredProducts = useMemo(() => {
     console.log("ĐANG LỌC VÀ SẮP XẾP LẠI DANH SÁCH...");
 
     const search = keyword.trim().toLowerCase();
 
-    // filter() luôn trả về MẢNG MỚI -> PRODUCTS gốc không bị đụng tới
     const result = PRODUCTS.filter((product) => {
       const matchName = product.name.toLowerCase().includes(search);
       const matchCategory = category === "Tất cả" || product.category === category;
       return matchName && matchCategory;
     });
 
-    // sort() sửa trực tiếp mảng nó được gọi. Ở đây `result` là mảng mới
-    // do filter() tạo ra, nên sort thoải mái mà PRODUCTS vẫn giữ nguyên thứ tự.
     if (sortType === "asc") {
       result.sort((a, b) => a.price - b.price);
     } else if (sortType === "desc") {
@@ -60,13 +41,9 @@ export default function ProductFilter() {
     return result;
   }, [keyword, category, sortType]);
 
-  // Class Tailwind dùng chung cho input và select
   const fieldClass =
     "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200";
 
-  // ============================================================
-  // 4. GIAO DIỆN
-  // ============================================================
   return (
     <div className="space-y-6">
       {/* ---------- Khu vực kiểm tra re-render ---------- */}

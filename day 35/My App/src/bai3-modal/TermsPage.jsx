@@ -2,13 +2,8 @@ import { useRef, useState } from 'react';
 import Modal from './Modal';
 import { btnPrimary, card } from '../styles';
 
-// Component CHA.
-// Lưu ý: ở đây KHÔNG có state isOpen nào cả!
-// Cha chỉ giữ một ref trỏ tới Modal và gọi modalRef.current.open().
 function TermsPage() {
   const modalRef = useRef(null);
-
-  // State này là của riêng cha (lưu kết quả đồng ý), KHÔNG phải trạng thái mở/đóng modal
   const [agreed, setAgreed] = useState(false);
 
   const handleOpenModal = () => {

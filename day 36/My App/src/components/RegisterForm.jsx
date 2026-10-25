@@ -2,10 +2,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-// ============================================================
-// 1. ZOD SCHEMA: "bộ luật" kiểm tra dữ liệu
-//    Mọi quy tắc validate nằm ở đây, KHÔNG viết rải rác trong JSX.
-// ============================================================
 const registerSchema = z
   .object({
     email: z
@@ -15,42 +11,27 @@ const registerSchema = z
     password: z.string().min(8, "Mật khẩu phải có ít nhất 8 ký tự"),
     confirmPassword: z.string().min(1, "Vui lòng nhập lại mật khẩu"),
   })
-  // refine() chạy SAU khi từng trường đã hợp lệ, để so sánh 2 trường với nhau
   .refine((data) => data.confirmPassword === data.password, {
     message: "Mật khẩu nhập lại không khớp",
-    path: ["confirmPassword"], // lỗi sẽ gắn vào ô "Nhập lại mật khẩu"
+    path: ["confirmPassword"], 
   });
 
-// ============================================================
-// 2. HÀM SUBMIT (giả lập gọi API 2 giây)
-//    Phải là async: React Hook Form sẽ chờ Promise này xong,
-//    trong lúc chờ thì isSubmitting = true.
-// ============================================================
 const onSubmit = async (data) => {
-  // Giả lập chờ 2 giây gửi API
   await new Promise((resolve) => setTimeout(resolve, 2000));
   console.log("Dữ liệu gửi đi:", data);
   alert("Đăng ký thành công!");
 };
 
 export default function RegisterForm() {
-  // ============================================================
-  // 3. useForm: tạo "bộ não" quản lý form
-  //    - register: nối từng input vào form
-  //    - handleSubmit: validate trước, hợp lệ mới gọi onSubmit
-  //    - formState.errors: lỗi của từng trường
-  //    - formState.isSubmitting: true trong lúc onSubmit đang chạy
-  // ============================================================
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(registerSchema), // dùng Zod làm "trọng tài"
+    resolver: zodResolver(registerSchema), 
     defaultValues: { email: "", password: "", confirmPassword: "" },
   });
 
-  // Viền input đổi màu đỏ khi trường đó có lỗi
   const inputClass = (hasError) =>
     `w-full rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 ${
       hasError

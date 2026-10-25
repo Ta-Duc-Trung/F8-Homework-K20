@@ -1,28 +1,18 @@
 import { useShop, ACTIONS } from "../context/ShopContext";
 import { formatPrice } from "../data/products";
 import { btnDanger, overlay, modalBox } from "../../styles";
-
-// Class cho 2 nút +/- nhỏ
 const qtyBtn =
     "h-8 w-8 cursor-pointer rounded-md border border-gray-300 bg-white enabled:hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40";
-
-// Modal giỏ hàng.
-// - isOpen / onClose: nhận từ ShopPage (đây chỉ là trạng thái giao diện
-//   "đang mở hay đóng", không phải dữ liệu cửa hàng nên không cần đưa vào context).
-// - cart / dispatch: lấy từ context.
 function CartModal({ isOpen, onClose }) {
     const { cart, dispatch } = useShop();
 
-    // Đang đóng -> không render gì cả
     if (!isOpen) return null;
 
-    // Tính tổng tiền: cộng dồn (giá x số lượng) của từng item
     const totalPrice = cart.reduce(
         (sum, item) => sum + item.price * item.quantity,
         0,
     );
 
-    // Gửi action cập nhật số lượng (dùng chung cho +, -, và ô input)
     const updateQuantity = (id, quantity) => {
         dispatch({ type: ACTIONS.UPDATE_QUANTITY, payload: { id, quantity } });
     };
@@ -32,7 +22,7 @@ function CartModal({ isOpen, onClose }) {
     };
 
     return (
-        // Lớp nền mờ. Bấm ra ngoài hộp -> đóng modal
+
         <div className={overlay} onClick={onClose}>
             {/* stopPropagation: bấm BÊN TRONG hộp thì không bị đóng */}
             <div

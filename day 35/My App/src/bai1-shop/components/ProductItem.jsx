@@ -2,8 +2,6 @@ import { useShop, ACTIONS } from '../context/ShopContext';
 import { formatPrice } from '../data/products';
 import { btnPrimary } from '../../styles';
 
-// Hiển thị 1 sản phẩm. Nhận `product` qua props từ ProductList,
-// còn `dispatch` thì lấy thẳng từ context (không cần truyền qua props).
 function ProductItem({ product }) {
   const { dispatch } = useShop();
 

@@ -1,37 +1,22 @@
 import { forwardRef, useImperativeHandle, useState } from 'react';
 import { btn, btnPrimary, overlay, modalBox } from '../styles';
 
-// =====================================================================
-// forwardRef: cho phép component cha truyền `ref` vào component con.
-// (Bình thường ref không đi qua props được, nên phải bọc forwardRef.)
-// Hàm bên trong nhận 2 tham số: (props, ref)
-// =====================================================================
 const Modal = forwardRef(function Modal({ title, children, onAgree }, ref) {
-  // Modal TỰ quản lý trạng thái mở/đóng của chính nó.
-  // Component cha không hề biết biến isOpen này tồn tại.
   const [isOpen, setIsOpen] = useState(false);
 
   const open = () => setIsOpen(true);
   const close = () => setIsOpen(false);
 
-  // ===================================================================
-  // useImperativeHandle(ref, () => object)
-  // Quyết định: khi cha đọc ref.current thì sẽ nhận được CÁI GÌ.
-  // Ở đây ta chỉ "mở cửa" đúng 2 phương thức: open và close.
-  // => Cha gọi được modalRef.current.open() / modalRef.current.close()
-  //    nhưng KHÔNG đụng được vào isOpen hay setIsOpen.
-  // ===================================================================
   useImperativeHandle(ref, () => ({
     open,
     close,
   }));
 
   const handleAgree = () => {
-    close(); // đóng modal
-    if (onAgree) onAgree(); // báo cho cha biết người dùng đã đồng ý
+    close(); 
+    if (onAgree) onAgree(); 
   };
 
-  // Đang đóng -> không render gì
   if (!isOpen) return null;
 
   return (

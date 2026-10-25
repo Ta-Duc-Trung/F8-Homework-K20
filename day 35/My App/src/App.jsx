@@ -2,8 +2,6 @@ import { useState } from 'react';
 import ShopPage from './bai1-shop/ShopPage';
 import AudioPage from './bai2-audio/AudioPage';
 import TermsPage from './bai3-modal/TermsPage';
-
-// App chỉ làm 1 việc: cho phép chuyển qua lại giữa 3 bài bằng tab.
 const TABS = [
   { id: 1, label: 'Bài 1: Giỏ hàng (useReducer + useContext)' },
   { id: 2, label: 'Bài 2: Audio & Stopwatch (useRef)' },
@@ -21,7 +19,6 @@ function App() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              // Tab đang chọn: nền tím chữ trắng. Tab khác: nền trắng.
               className={
                 'cursor-pointer rounded-lg border px-3.5 py-2.5 text-sm ' +
                 (activeTab === tab.id

@@ -5,12 +5,8 @@ import ProductList from './components/ProductList';
 import CartModal from './components/CartModal';
 import { btn } from '../styles';
 
-// Thanh tiêu đề: hiển thị nút giỏ hàng kèm TỔNG SỐ LƯỢNG sản phẩm
 function Header({ onOpenCart }) {
   const { cart } = useShop();
-
-  // Tổng số lượng = cộng quantity của tất cả item
-  // Ví dụ: 2 iPhone + 1 MacBook = 3
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
@@ -26,8 +22,6 @@ function Header({ onOpenCart }) {
   );
 }
 
-// Nội dung cửa hàng. Tách riêng khỏi ShopPage vì các component
-// dùng useShop() phải nằm BÊN TRONG <ShopProvider>.
 function ShopContent() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -41,7 +35,6 @@ function ShopContent() {
   );
 }
 
-// Bọc toàn bộ cửa hàng trong ShopProvider để chia sẻ dữ liệu
 function ShopPage() {
   return (
     <ShopProvider>

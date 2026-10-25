@@ -1,31 +1,21 @@
 import { useRef, useState } from 'react';
 import { btn, btnPrimary, card } from '../styles';
 
-// File nhạc online miễn phí dùng để test.
-// Muốn dùng nhạc local: bỏ file .mp3 vào thư mục /public rồi đổi SRC thành '/ten-file.mp3'
 const SONG = {
   title: 'SoundHelix Song 1',
   src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
 };
 
-const VOLUME_STEP = 0.1; // mỗi lần bấm tăng/giảm 10%
+const VOLUME_STEP = 0.1; 
 
 function AudioPlayer() {
-  // =================================================================
-  // useRef: tạo một "cái hộp" để giữ tham chiếu tới thẻ <audio> thật trong DOM.
-  // Sau khi render, audioRef.current chính là phần tử <audio>
-  // -> gọi được các hàm có sẵn: .play(), .pause(), .muted, .volume ...
-  // =================================================================
   const audioRef = useRef(null);
 
-  // State CHỈ dùng để HIỂN THỊ trạng thái lên màn hình.
-  // Việc điều khiển thật sự luôn đi qua audioRef.current.
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(1); // 0 -> 1 (0% -> 100%)
+  const [volume, setVolume] = useState(1); 
 
   const handlePlay = () => {
-    // play() trả về Promise, có thể lỗi (mất mạng, link hỏng...) nên cần catch
     audioRef.current.play().catch((err) => {
       alert('Không phát được nhạc: ' + err.message);
     });
@@ -37,25 +27,21 @@ function AudioPlayer() {
 
   const handleToggleMute = () => {
     const audio = audioRef.current;
-    audio.muted = !audio.muted; // đảo trạng thái tắt tiếng
-    setIsMuted(audio.muted); // cập nhật để giao diện hiển thị đúng
+    audio.muted = !audio.muted; 
+    setIsMuted(audio.muted);
   };
 
-  // Hàm chung để đổi âm lượng, luôn giữ trong khoảng 0 -> 1
   const changeVolume = (delta) => {
     const audio = audioRef.current;
     let newVolume = audio.volume + delta;
 
-    // Kẹp giá trị: volume của <audio> chỉ chấp nhận 0 -> 1, ngoài khoảng sẽ báo lỗi
     newVolume = Math.min(1, Math.max(0, newVolume));
-    // Làm tròn 1 chữ số thập phân (tránh lỗi số thực kiểu 0.30000000004)
     newVolume = Math.round(newVolume * 10) / 10;
 
     audio.volume = newVolume;
     setVolume(newVolume);
   };
 
-  // Chữ mô tả trạng thái hiện tại
   let statusText = isPlaying ? '▶️ Đang phát' : '⏸️ Đã dừng';
   if (isMuted) statusText += ' · 🔇 Tắt tiếng';
 

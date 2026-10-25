@@ -1,13 +1,8 @@
 import { useShop, ACTIONS } from '../context/ShopContext';
 import { CATEGORIES } from '../data/products';
-
-// Class chung cho ô input và select
 const fieldClass =
   'rounded-lg border border-gray-300 bg-white p-2.5 text-sm outline-none focus:border-indigo-500';
 
-// Ô tìm kiếm + dropdown chọn danh mục.
-// Component này KHÔNG có state riêng: giá trị lấy từ context,
-// khi người dùng thay đổi thì dispatch action SET_FILTER.
 function SearchBar() {
   const { keyword, category, dispatch } = useShop();
 
